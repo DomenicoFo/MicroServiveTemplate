@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  microservice:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      JWT_SECRET: ${JWT_SECRET:-changeme_in_production}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-24h}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
+      CONFIG_FILE_PATH: /app/config/microservice.config.json
+      UPLOADS_DIR: /app/uploads
+    volumes:
+      - config_data:/app/config
+      - uploads_data:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:3000/health']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  config_data:
+  uploads_data:
