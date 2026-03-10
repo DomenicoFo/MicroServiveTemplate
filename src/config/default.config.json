@@ -1,0 +1,15 @@
+{
+  "name": "My Microservice",
+  "description": "A configurable microservice template",
+  "version": "1.0.0",
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "name": "microservice_db",
+    "user": "dbuser",
+    "password": "",
+    "ssl": false
+  },
+  "apiConnectors": [],
+  "updatedAt": "2026-01-01T00:00:00.000Z"
+}

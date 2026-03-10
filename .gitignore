@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+.env
+uploads/*.yaml
+uploads/*.yml
+uploads/*.json
+*.log
+config/microservice.config.json
+config/users.json
+tmp-test-config*/
